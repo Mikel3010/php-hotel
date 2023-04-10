@@ -38,7 +38,18 @@ $hotels = [
     ],
 ];
 
-
+if(isset($_GET['parking'])){
+    $parking_filter = $_GET['parking'];
+    if($parking_filter==='1'){
+        $hotels = array_filter($hotels, function($hotel){
+            return $hotel['parking']== true;
+        });
+    }elseif ($parking_filter==='0'){
+        $hotels = array_filter($hotels, function($hotel){
+            return $hotel['parking']== false;
+        });
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -54,6 +65,16 @@ $hotels = [
 
 <body>
     <h1>Elenco Hotel</h1>
+    <form method="get" action="">
+        <label for="parking">Disponibilità parcheggio:</label>
+        <select name="parking" id="parking">
+            <option value="">Tutti</option>
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </select>
+        <button type="sunmit">Filtra</button>
+    </form>
+
     <table class="table">
         <thead>
             <tr>
