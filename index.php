@@ -49,6 +49,16 @@ $hotels = [
     <title>php hotel</title>
 </head>
 <body>
+    <h1>Elenco Hotel</h1>
+    <?php foreach ($hotels as $hotel) {?>
+        <p>
+            <strong>Nome:</strong><?php echo $hotel['name'];?><br>
+            <strong>Descrizione:</strong><?php echo $hotel['description'];?><br>
+            <strong>Parcheggio:</strong><?php echo $hotel['parking'];?><br>
+            <strong>Voto:</strong><?php echo $hotel['vote'];?><br>
+            <strong>Distanza dal centro:</strong><?php echo $hotel['distance_to_center'];?><br>
+        </p>
+        <?php }?>
     
 </body>
 </html>
